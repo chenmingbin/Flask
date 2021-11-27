@@ -62,8 +62,36 @@ app = Flask(__name__)
 app.config.from_object(config)
 ```
 
-## URL与视图
+## 2.URL与视图：
 
-### 1.URL与函数的映射
+### 1.URL与视图函数的映射
 
- 
+ @app.route中声明\<类型:变量名>然后在def中传入该变量名完成映射
+
+```python
+@app.route('/<int:book>')
+def book_path(book)
+```
+
+> <>尖括号是固定写法
+>
+> 可用类型有：
+>
+> int：整型
+>
+> float：浮点型
+>
+> path：和string类似，但是可以传递斜杠" / "
+>
+> string：字符串类型
+>
+> uuid：uuid类型的字符串
+>
+> any：可用指定多种路径，
+
+> 这种映射方法可以用在数据库连接、excel或字典、列表、元组等
+
+> 这里引出一个测试点：在进行接口测试时需要注意类型的传递，可能会因为类型不同的情况出现BUG
+
+### 2.构造URL
+
